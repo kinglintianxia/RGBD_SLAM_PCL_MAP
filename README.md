@@ -1,7 +1,8 @@
-# This repo was forked from raulmur/ORB_SLAM2
+# This repo was forked from [raulmur/ORB_SLAM2](https://github.com/raulmur/ORB_SLAM2) & modified from [gaoxiang12/ORBSLAM2_with_pointcloud_map](https://github.com/gaoxiang12/ORBSLAM2_with_pointcloud_map)
 # Modified:
-1. load mp & kf map
-
+1. Save and load KFs&MapPoints map
+2. Add a pcl viewer 
+---
 #################################
 # ORB-SLAM2
 **Authors:** [Raul Mur-Artal](http://webdiis.unizar.es/~raulmur/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/), [J. M. M. Montiel](http://webdiis.unizar.es/~josemari/) and [Dorian Galvez-Lopez](http://doriangalvez.com/) ([DBoW2](https://github.com/dorian3d/DBoW2))
