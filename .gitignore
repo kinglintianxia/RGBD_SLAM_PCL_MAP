@@ -1,0 +1,101 @@
+CMakeLists.txt.user
+Examples/Monocular/mono_euroc
+Examples/Monocular/mono_kitti
+Examples/Monocular/mono_tum
+Examples/RGB-D/rgbd_tum
+Examples/ROS/ORB_SLAM2/CMakeLists.txt.user
+Examples/ROS/ORB_SLAM2/Mono
+Examples/ROS/ORB_SLAM2/MonoAR
+Examples/ROS/ORB_SLAM2/RGBD
+Examples/ROS/ORB_SLAM2/Stereo
+Examples/ROS/ORB_SLAM2/build/
+Examples/Stereo/stereo_euroc
+Examples/Stereo/stereo_kitti
+KeyFrameTrajectory.txt
+Thirdparty/DBoW2/build/
+Thirdparty/DBoW2/lib/
+Thirdparty/g2o/build/
+Thirdparty/g2o/config.h
+Thirdparty/g2o/lib/
+Vocabulary/ORBvoc.txt
+build/
+*~
+lib/
+
+############king###############################33
+####### map
+map/
+map.bin
+*.bin
+
+####### evaluation
+*.zip
+pykitti/
+dataset
+
+####### test & tools binary output
+/test/map_viewer
+tools/test_relocalization
+tools/bin_vocabulary
+test/bin_vocabulary
+test/test_relocalization
+# ORBvoc.txt.tar.gz
+ORBvoc.txt.tar.gz
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMakeLists.txt
+*.txt.user
+
+# .gitignore
+*.swp
+*~
+
+# build file
+build
+build-*
+
+# Vocabulary file
+Vocabulary
+# pcd file
+*.pcd
+
+# shell
+*.sh~
+
+# Pangolin
+Thirdparty/Pangolin/build
+
+# Thirdparty
+Thirdparty/
