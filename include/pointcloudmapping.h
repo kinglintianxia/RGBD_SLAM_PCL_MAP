@@ -27,6 +27,7 @@
 #include <pcl/filters/voxel_grid.h> // downsample
 #include <pcl/io/pcd_io.h>
 #include <condition_variable>
+#include <fstream>
 
 //using namespace ORB_SLAM2;
 namespace ORB_SLAM2 {
@@ -64,6 +65,9 @@ protected:
     
     double resolution = 0.04;
     pcl::VoxelGrid<PointT>  voxel;
+
+    // for save kf timestamp
+    std::ofstream kf_file;
 };
 
 

@@ -32,6 +32,7 @@ PointCloudMapping::PointCloudMapping(double resolution_)
     globalMap = boost::make_shared< PointCloud >( );
     
     viewerThread = make_shared<thread>( bind(&PointCloudMapping::viewer, this ) );
+    kf_file.open("./kf_timestmp.txt");
 }
 
 void PointCloudMapping::shutdown()
@@ -47,6 +48,7 @@ void PointCloudMapping::shutdown()
     writer.write("./pclmap.pcd", *globalMap);
     // king
     viewerThread->join();
+
 }
 
 void PointCloudMapping::insertKeyFrame(KeyFrame* kf, cv::Mat& color, cv::Mat& depth)
@@ -58,6 +60,10 @@ void PointCloudMapping::insertKeyFrame(KeyFrame* kf, cv::Mat& color, cv::Mat& de
     depthImgs.push_back( depth.clone() );
     
     keyFrameUpdated.notify_one();
+    // for save timestamp
+    kf_file << std::setiosflags(ios::fixed)
+            << setprecision(6)
+            << double(kf->mTimeStamp) << std::endl;
 }
 
 pcl::PointCloud< PointCloudMapping::PointT >::Ptr PointCloudMapping::generatePointCloud(KeyFrame* kf, cv::Mat& color, cv::Mat& depth)
