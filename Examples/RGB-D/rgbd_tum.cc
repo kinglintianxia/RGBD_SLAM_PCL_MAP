@@ -125,6 +125,14 @@ int main(int argc, char** argv)
             usleep((T-ttrack)*1e6);
     }
 
+    //
+    /*******Save Map*********/
+    if (OnlyTracking == "false")
+        SLAM.SaveMap("./map.bin");
+    // Save camera trajectory
+    SLAM.SaveTrajectoryTUM("CameraTrajectory.txt");
+    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");  // (tx,ty,tz,qx,qy,qz,qw)
+
     // Stop all threads
     SLAM.Shutdown();
 
@@ -139,12 +147,7 @@ int main(int argc, char** argv)
     cout << "median tracking time: " << vTimesTrack[nImages/2] << endl;
     cout << "mean tracking time: " << totaltime/nImages << endl;
 
-    /*******Save Map*********/
-    if (OnlyTracking == "false")
-        SLAM.SaveMap("./map.bin");
-    // Save camera trajectory
-    SLAM.SaveTrajectoryTUM("CameraTrajectory.txt");
-    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");   
+
 
     return 0;
 }

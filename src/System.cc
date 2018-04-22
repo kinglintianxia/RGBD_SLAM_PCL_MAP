@@ -427,7 +427,7 @@ void System::SaveTrajectoryTUM(const string &filename)
     cout << endl << "trajectory saved!" << endl;
 }
 
-
+// (tx,ty,tz,qx,qy,qz,qw)
 void System::SaveKeyFrameTrajectoryTUM(const string &filename)
 {
     cout << endl << "Saving keyframe trajectory to " << filename << " ..." << endl;
@@ -437,7 +437,7 @@ void System::SaveKeyFrameTrajectoryTUM(const string &filename)
 
     // Transform all keyframes so that the first keyframe is at the origin.
     // After a loop closure the first keyframe might not be at the origin.
-    //cv::Mat Two = vpKFs[0]->GetPoseInverse();
+    cv::Mat Two = vpKFs[0]->GetPoseInverse();
 
     ofstream f;
     f.open(filename.c_str());
@@ -447,17 +447,17 @@ void System::SaveKeyFrameTrajectoryTUM(const string &filename)
     {
         KeyFrame* pKF = vpKFs[i];
 
-       // pKF->SetPose(pKF->GetPose()*Two);
+        pKF->SetPose(pKF->GetPose()*Two);
 
         if(pKF->isBad())
             continue;
-
+        // modified by king @ 2018.4.22
         cv::Mat R = pKF->GetRotation().t();
         vector<float> q = Converter::toQuaternion(R);
+        // modified by king @ 2018.4.22
         cv::Mat t = pKF->GetCameraCenter();
         f << setprecision(6) << pKF->mTimeStamp << setprecision(7) << " " << t.at<float>(0) << " " << t.at<float>(1) << " " << t.at<float>(2)
           << " " << q[0] << " " << q[1] << " " << q[2] << " " << q[3] << endl;
-
     }
 
     f.close();
