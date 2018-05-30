@@ -98,3 +98,12 @@ target_link_libraries(RGBD
 ${LIBS}
 )
 
+# Node for RGB-D to image
+rosbuild_add_executable(bag2tum
+src/bag2tum.cc
+)
+
+target_link_libraries(bag2tum
+${LIBS}
+)
+

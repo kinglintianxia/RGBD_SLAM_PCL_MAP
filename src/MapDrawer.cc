@@ -93,8 +93,8 @@ void MapDrawer::DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph)
 {
     //历史关键帧图标：宽度占总宽度比例为0.05
     const float &w = mKeyFrameSize;
-    const float h = w*0.75;
-    const float z = w*0.6;
+    const float h = w*0.75;     //w*3.0;
+    const float z = w*0.6;    //w*3.0;
 
     //步骤1：取出所有的关键帧
     const vector<KeyFrame*> vpKFs = mpMap->GetAllKeyFrames();
@@ -141,6 +141,21 @@ void MapDrawer::DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph)
 
             glVertex3f(-w,-h,z);
             glVertex3f(w,-h,z);
+            // king
+//            glBegin(GL_LINES);
+//            // x
+//            glColor3f(1.0f,0.0f,0.0f);
+//            glVertex3f(0,0,0);
+//            glVertex3f(h,0,0);
+//            // y
+//            glColor3f(0.0f,1.0f,0.0f);
+//            glVertex3f(0,0,0);
+//            glVertex3f(0,h,0);
+//            // z
+//            glColor3f(0.0f,0.0f,1.0f);
+//            glVertex3f(0,0,0);
+//            glVertex3f(0,0,z);
+            // end
             glEnd();
 
             glPopMatrix();
@@ -154,7 +169,7 @@ void MapDrawer::DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph)
         //设置绘制图形时线的宽度
         glLineWidth(mGraphLineWidth);
         //设置共视图连接线为绿色，透明度为0.6f
-        glColor4f(0.0f,1.0f,0.0f,0.6f);
+//        glColor4f(0.0f,1.0f,0.0f,0.6f);
         glBegin(GL_LINES);
 
         for(size_t i=0; i<vpKFs.size(); i++)
@@ -164,6 +179,7 @@ void MapDrawer::DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph)
             //遍历每一个关键帧，得到它们共视程度比较高的关键帧
             const vector<KeyFrame*> vCovKFs = vpKFs[i]->GetCovisiblesByWeight(100);
             //遍历每一个关键帧，得到它在世界坐标系下的相机坐标
+            glColor4f(0.0f,1.0f,0.0f,0.6f);
             cv::Mat Ow = vpKFs[i]->GetCameraCenter();
             if(!vCovKFs.empty())
             {
@@ -189,6 +205,7 @@ void MapDrawer::DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph)
 
             // Loops
             //步骤3.3 连接闭环时形成的连接关系
+            glColor4f(1.0f,0.0f,0.0f,0.6f);
             set<KeyFrame*> sLoopKFs = vpKFs[i]->GetLoopEdges();
             for(set<KeyFrame*>::iterator sit=sLoopKFs.begin(), send=sLoopKFs.end(); sit!=send; sit++)
             {
@@ -227,7 +244,7 @@ void MapDrawer::DrawCurrentCamera(pangolin::OpenGlMatrix &Twc)
     //设置绘制图形时线的宽度
     glLineWidth(mCameraLineWidth);
     //设置当前颜色为绿色(相机图标显示为绿色)
-    glColor3f(0.0f,1.0f,0.0f);
+    glColor3f(1.0f,0.0f,0.0f);
     //用线将下面的顶点两两相连
     glBegin(GL_LINES);
     glVertex3f(0,0,0);

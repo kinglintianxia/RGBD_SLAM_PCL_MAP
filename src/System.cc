@@ -358,12 +358,12 @@ void System::Shutdown()
         usleep(5000);
     }
 
-    if(mpViewer)
-    {
-        pangolin::BindToContext("ORB-SLAM2: Map Viewer");
-        // test 
-        std::cout << "---test mpViewer 3---" << std::endl;
-    }
+//    if(mpViewer)
+//    {
+//        pangolin::BindToContext("ORB-SLAM2: Map Viewer");
+//        // test
+//        std::cout << "---test mpViewer 3---" << std::endl;
+//    }
 
 }
 

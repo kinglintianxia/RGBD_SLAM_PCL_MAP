@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # import mpl_toolkits.mplot3d
 from mpl_toolkits.mplot3d import Axes3D
 
-f = open("./lab/kinect2_lab.txt")
+f = open("./ras_kf.txt")
 x = []
 y = []
 z = []

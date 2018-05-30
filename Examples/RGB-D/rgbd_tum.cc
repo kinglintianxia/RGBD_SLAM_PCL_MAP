@@ -133,9 +133,7 @@ int main(int argc, char** argv)
     SLAM.SaveTrajectoryTUM("CameraTrajectory.txt");
     SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");  // (tx,ty,tz,qx,qy,qz,qw)
 
-    // Stop all threads
-    SLAM.Shutdown();
-
+	
     // Tracking time statistics
     sort(vTimesTrack.begin(),vTimesTrack.end());
     float totaltime = 0;
@@ -146,6 +144,9 @@ int main(int argc, char** argv)
     cout << "-------" << endl << endl;
     cout << "median tracking time: " << vTimesTrack[nImages/2] << endl;
     cout << "mean tracking time: " << totaltime/nImages << endl;
+
+    // Stop all threads
+    SLAM.Shutdown();
 
 
 

@@ -1,7 +1,7 @@
 <package>
-  <description brief="ORB_SLAM2_PCL_MAP">
+  <description brief="RGBD_SLAM_PCL_MAP">
 
-     ORB_SLAM2_PCL_MAP
+     RGBD_SLAM_PCL_MAP
 
   </description>
   <author>Raul Mur-Artal</author>
